@@ -16,3 +16,13 @@ function sudo {
 
 # shutdown the machine
 function poweroff { shutdown /s /t 0 }
+
+# Make the terminal more bearable
+if ( $PSVersionTable.PSVersion.Major -ge 5 ) {
+  Set-PSReadlineKeyHandler -Chord 'Ctrl-a' -Function BeginningOfLine
+  Set-PSReadlineKeyHandler -Chord 'Ctrl-e' -Function EndOfLine
+  Set-PSReadlineKeyHandler -Chord 'Ctrl-w' -Function BackwardKillWord
+  Set-PSReadlineKeyHandler -Chord 'Ctrl-k' -Function ForwardDeleteLine
+  Set-PSReadlineKeyHandler -Chord 'Ctrl-u' -Function BackwardDeleteLine
+  Set-PSReadlineKeyHandler -Chord 'Ctrl-y' -Function Yank
+}
